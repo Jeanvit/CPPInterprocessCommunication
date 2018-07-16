@@ -17,12 +17,16 @@ public:
 	Client (const std::string& clientName);
 	~Client(); 
 	Data readData();
+	std::string readPipeData();
+	void readAllServerData();
+	void requestServerAction(const unsigned int option);
+	void setPipe();
+	bool writePipeData(const std::string& data);
+	bool authenticate();
+	bool openConnection();
 	inline std::string getPipeName() const { return pipeName; };
 	inline unsigned int getAuthKey() const { return authKey; };
 	inline HANDLE getPipe() const { return currentPipe; }
-	void setPipe();
-	bool sendData() ;
-	bool openConnection();
 
 };
 

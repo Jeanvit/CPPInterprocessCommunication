@@ -4,17 +4,17 @@
 #include <iostream>
 #include <string>
 
-/* add template */
-
 class Data {
 private:
-	const std::string dataName;
-	const unsigned int id;
+	std::string dataName;
 
 public:
-	Data (const std::string& name, const unsigned int number): dataName(name), id(number)  { std::cout << "Created " << dataName << " data. " << std::endl; };
+	Data (const std::string& name): dataName(name) {};
 	inline std::string getDataName() const { return this->dataName; };
-	inline unsigned int getId() const { return this->id; };
+	inline std::string toString() const { return this->dataName; };
+	
+	friend std::ostream& operator<<(std::ostream& os, const Data& data)  {   os << data.dataName; return os; } ;  
+	void operator= ( std::string name ) { dataName = name; };
 };
 
 
